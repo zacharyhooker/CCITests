@@ -1,0 +1,14 @@
+version: 2
+jobs:
+	version:
+		docker:
+			-image: circleci/node
+		steps:
+			- checkout
+			- run:
+				name: get version
+				command: VERSION=cat VERSION
+			- run:
+				name: update version
+				command: |
+					[[ "$VERSION" =~ (.*[^0-9])([0-9]+)$ ]] && VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))"; git commit -am "update version ${VERSION}" && git push
