@@ -8,7 +8,9 @@ jobs:
       - run:
         name: get version
         command: VERSION=cat VERSION
-      - run: |
+      - run:
+        name: set version
+        command: |
           [[ "$VERSION" =~ (.*[^0-9])([0-9]+)$ ]] &&
           VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))";
           git commit -am "update version ${VERSION}" && git push
