@@ -11,4 +11,4 @@ jobs:
       - run:
         name: update version
         command: |
-        if [[ "$VERSION" =~ (.*[^0-9])([0-9]+)$ ]] ; then VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))"; git commit -am "update version ${VERSION}" && git push
+        VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))"; git commit -am "update version ${VERSION}" && git push
