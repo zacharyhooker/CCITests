@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "get version"
-        command: VERSION=cat VERSION
+          name: "get version"
+          command: VERSION=cat VERSION
       - run:
-        name: update version
-        command: VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))" && git commit -am "update version ${VERSION}" && git push
+          name: update version
+          command: VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))" && git commit -am "update version ${VERSION}" && git push
