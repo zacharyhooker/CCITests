@@ -15,7 +15,7 @@ jobs:
           command: export VERSION=`cat VERSION`
       - run:
           name: "update version"
-          command: [[ "$VERSION" =~ (.*[^0-9])([0-9]+)$ ]] then VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))" && echo "$VERSION" > VERSION && git commit -am "update version ${VERSION} [ci skip]" fi
+          command: if [[ "$VERSION" =~ (.*[^0-9])([0-9]+)$ ]] then VERSION="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))" && echo "$VERSION" > VERSION && git commit -am "update version ${VERSION} [ci skip]" fi
       - run:
           name: "git commit"
           command: "echo $VERSION"
